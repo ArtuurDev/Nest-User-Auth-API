@@ -10,8 +10,8 @@ import { UserEntity } from './user/entity/user-entity';
     
     type: 'postgres',
     host: 'localhost',
-    port: 3000,
-    username: 'nest-user-api',
+    port: 5432,
+    username: 'postgres',
     password: 'artur92546331',
     database: 'nest-user-api',
     entities: [UserEntity],

@@ -1,5 +1,4 @@
 import { IsEmail, IsString } from "class-validator";
-import { CreateDateColumn } from "typeorm";
 
 
 
@@ -14,6 +13,10 @@ export class CreateUserDTO {
 
     @IsString()
     cpf: string
+
+    created_at: string
+
+    updated_at: string
 
     
 
