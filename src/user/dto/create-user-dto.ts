@@ -1,4 +1,4 @@
-import { IsEmail, IsString } from "class-validator";
+import { IsDateString, IsEmail, IsOptional, IsString, IsStrongPassword } from "class-validator";
 
 
 
@@ -14,9 +14,15 @@ export class CreateUserDTO {
     @IsString()
     cpf: string
 
-    created_at: string
+    @IsStrongPassword()
+    password: string
 
-    updated_at: string
+    @IsOptional()
+    @IsDateString()
+    created_at:  string 
+    @IsOptional()
+    @IsDateString()
+    updated_at:  string
 
     
 
