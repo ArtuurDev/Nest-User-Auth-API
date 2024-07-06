@@ -1,15 +1,15 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from "@nestjs/common";
-import { AdminController,} from "./admin.controller";
 import { PrismaModule } from "src/prisma/prisma.module";
-import { AdminService } from "./admin.service";
+import { UserService } from "./user.service";
 import { UseIdCheckMiddleware } from "src/middleware/use-id-check-middleware";
+import { UserController } from "./user.controller";
 
 
 
 @Module({
     imports: [PrismaModule],
-    controllers: [AdminController],
-    providers: [AdminService],
+    controllers: [UserController],
+    providers: [UserService],
     exports: []
 })
 export class UserModule implements NestModule{
