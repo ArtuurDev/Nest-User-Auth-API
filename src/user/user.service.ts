@@ -1,123 +1,154 @@
-import { BadRequestException, Body, Get, Injectable, Param, ParseIntPipe } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
-import { CreateUserDTO } from "./dto/create-user-dto";
-import { UpdateUserDTO } from "./dto/update-user-dto";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
+import { CreateUserDTO } from "src/dto/create-user-dto";
+import { UpdateUserDTO } from "src/dto/update-user-dto";
+import { PrismaService } from "src/Prisma/prisma.Service";
+
+
 
 @Injectable()
 export class UserService {
 
-
     constructor(private readonly prisma: PrismaService) {
-
+        
     }
+
 
     async create(data: CreateUserDTO) {
 
-        const {email} = data
-        const {cpf} = data
+        const {email, CPF} = data
 
-        const userEmail = await this.prisma.user.count({
-            where: {
-                email
-            }
-        })
+        try {
 
-        const userCpf = await this.prisma.user.count({
-            where: {
-                cpf
-            }
-        })
+            const userEmail = await this.prisma.user.count({
 
-        const user = await this.prisma.user.create({
-            data
-        })
+                where: {
+                    email: email
+                }
+            })
 
-        if (userEmail || userCpf ) {
+            const userCPF = await this.prisma.user.count({
+
+                where: {
+                    CPF: CPF
+                }
+            })
 
             if (userEmail) {
-                throw new BadRequestException('esse email já existe')
+
+                return {message: 'Esse e-mail já existe'}
+
             }
-            if (userCpf) {
-                throw new BadRequestException('CPF inválido')
+
+            if (userCPF) {
+
+                return {message: 'CPF incorreto'}
+
             }
+
+            const user = await this.prisma.user.create({
+                
+                data
+            })
+
+            return user
+
+        } catch(error) {
+
+            console.log('não foi possivel criar usuario', error)
+            throw new BadRequestException('não foi possivel criar usuário')
+
         }
-    
-        return {message: 'usuario criado com sucesso', user}
-   
+
     }
 
 
+    async read() {
 
-
-    async list() {
         return this.prisma.user.findMany()
+
     }
 
+    async readOne(id: number) {
 
-
-    
-    async show(@Param('id', ParseIntPipe) id: number) {
         
-        await this.verification(id)
-        
-        return this.prisma.user.findUnique({
+    try {
+            
+        const user = await this.prisma.user.findUnique({
             where: {
                 id
             }
         })
-    }
+
+        return {message: 'usuario encontrado', user}
+
+        } catch(error) {
+
+            console.log(error)
+            throw new NotFoundException('erro ao buscar')
+        }
     
+    
+    } 
 
+    async update(data: UpdateUserDTO, id: number) {
 
-    async update(data: UpdateUserDTO, id:number) {
-
-        await this.verification(id)
+        
+        try {
+            await this.verification(id)
 
         const user = await this.prisma.user.update({
+
             data, 
             where: {
                 id
             }
+            
         })
 
-        return {message: 'usuario atualizado com sucesso', user}
+        return {message: 'usuário atualizado', user}
 
+        } catch(error) {
+
+            console.log(error)
+            throw new BadRequestException('erro ao atualizar as informaçoes do usuario')
+        }
+        
+        
+        
     }
 
+    async delete(id: number) {
 
 
+        try {
+            await this.verification(id)
 
-    async verification(id: number) {
-        
-        const user = await this.prisma.user.count({
+        return this.prisma.user.delete({
             where: {
                 id
             }
         })
+        } catch (error) {
+            throw new BadRequestException('erro ao deletar') 
+
+        }
+    }
+
+    
+    async verification(id: number) {
+
+        const user = await this.prisma.user.count({
+            where:{
+                id:id
+             }
+        })
 
         if (!user) {
-            throw new BadRequestException('esse usuario não existe')
+            throw new BadRequestException('id inválido')
         }
 
         return user
 
     }
-
-
-
-
-    async delete(id: number) {
-
-        await this.verification(id)
-
-        const deleteUser = await this.prisma.user.delete({
-            where: {
-                id
-            }
-        })
-        
-        return {message: 'usuario deletado com sucesso', deleteUser}
-    }
-
 
 }
