@@ -16,30 +16,28 @@ export class UserService {
 
         try {
 
-            const userEmail = await this.prisma.user.count({
+            const userExists = await this.prisma.user.findFirst({
                 where: {
-                    email: email
+                    OR: [
+                        { email: email },
+                        { CPF: CPF }
+                    ]
                 }
             });
-
-            const userCPF = await this.prisma.user.count({
-                where: {
-                    CPF: CPF
+        
+            if (userExists) {
+                if (userExists.email === email) {
+                    return { message: 'Esse e-mail já existe' };
                 }
-            });
-
-            if (userEmail) {
-                return { message: 'Esse e-mail já existe' };
+                if (userExists.CPF === CPF) {
+                    return { message: 'Este CPF já está cadastrado' };
+                }
             }
-
-            if (userCPF) {
-                return { message: 'CPF incorreto' };
-            }
-
+        
             const user = await this.prisma.user.create({
                 data
             });
-
+        
             return user;
 
         } catch (error) {
