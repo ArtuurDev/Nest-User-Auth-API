@@ -38,7 +38,7 @@ export class UserService {
                 data
             });
         
-            return user;
+            return user
 
         } catch (error) {
             console.log('não foi possivel criar usuario', error);
@@ -86,7 +86,7 @@ export class UserService {
                 }
             });
 
-            return { message: 'usuário atualizado', user };
+            return user;
 
         } catch (error) {
             console.log(error);
