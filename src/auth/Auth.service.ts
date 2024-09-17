@@ -19,7 +19,7 @@ export class AuthService {
     }
 
 
-    async createToken(user: User) {
+    createToken(user: User) {
 
         return {
             accessToken: this.jwtService.sign({
@@ -29,18 +29,29 @@ export class AuthService {
                 email: user.email
             }, {
                 subject: String(user.id),
-        
-                expiresIn: '1h'
+                issuer: 'login',
+                audience: 'users',
+                expiresIn: '7 days'
             })
         }
 
     } 
 
 
-    async checkToken(token) {
+    checkToken(token:string) {
 
-        return this.jwtService.verify(token,{
-        })
+        try {
+            const data = this.jwtService.verify(token,{
+                audience: 'users',
+                issuer: 'login'
+            })
+
+            return data
+        } catch (e) {
+            
+            throw new BadRequestException(e)
+        }
+        
     }
 
 
@@ -62,7 +73,7 @@ export class AuthService {
             return this.createToken(user)
         }
         catch(error) {
-            console.log('Não foi possivel emitir token', error)
+            throw new BadRequestException(error)
         }
 
     }

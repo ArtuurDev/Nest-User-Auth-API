@@ -107,7 +107,7 @@ export class UserService {
             });
 
         } catch (error) {
-            throw new BadRequestException('erro ao deletar');
+            throw new BadRequestException('id não enccontrado');
         }
 
     }
