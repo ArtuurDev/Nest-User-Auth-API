@@ -4,7 +4,6 @@ import { AuthLoginDTO } from "./dto/loginDTO";
 import { PrismaService } from "src/Prisma/prisma.Service";
 import { User } from "@prisma/client";
 import { AuthForgetDTO } from "./dto/forgetDTO";
-import { UserService } from "src/User/User.Service";
 import { AuthRegisterDTO } from "./dto/registerDTO";
 
 
@@ -12,7 +11,6 @@ import { AuthRegisterDTO } from "./dto/registerDTO";
 export class AuthService {
 
     constructor(
-        private readonly userService: UserService,
         private readonly prisma: PrismaService,
         private readonly jwtService: JwtService) {
 
@@ -26,7 +24,9 @@ export class AuthService {
 
                 user: user.id,
                 name: user.name,
-                email: user.email
+                email: user.email,
+                CPF: user.CPF,
+                role: user.role
             }, {
                 subject: String(user.id),
                 issuer: 'login',
@@ -44,6 +44,7 @@ export class AuthService {
             const data = this.jwtService.verify(token,{
                 audience: 'users',
                 issuer: 'login'
+                
             })
 
             return data

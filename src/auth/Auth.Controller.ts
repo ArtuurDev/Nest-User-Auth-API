@@ -13,8 +13,7 @@ import { User } from "src/decorators/use-check-decorators";
 export class AuthController {
 
     constructor(
-        private readonly authService: AuthService,
-        private readonly userService: UserService) {
+        private readonly authService: AuthService) {
         
     }
 

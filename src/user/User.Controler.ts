@@ -1,10 +1,14 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
 import { UserService } from "./User.Service";
 import { CreateUserDTO } from "src/dto/create-user-dto";
 import { UpdateUserDTO } from "src/dto/update-user-dto";
 
+import { User } from "src/enums/enums";
+import { AuthGuard } from "src/guards/auth.guard";
+import { RoleGuard } from "src/guards/role.guard";
 
 
+@UseGuards(AuthGuard, RoleGuard)
 @Controller('user')
 export class UserController {
 

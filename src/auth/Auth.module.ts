@@ -11,10 +11,10 @@ import { AuthController } from "./Auth.Controller";
         secret: 'fsdbuyvbcd553653665524442125ejhbhhvvWWWDEDD!!SEASAFC¨&)()(&¨$&&&'
 
     }),
-    UserModule,
     PrismaModule],
     controllers: [AuthController],
-    providers: [AuthService]
+    providers: [AuthService],
+    exports: [AuthService]
 
 })
 export class AuthModule {
