@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from "@nestjs/comm
 import { CreateUserDTO } from "src/dto/create-user-dto";
 import { UpdateUserDTO } from "src/dto/update-user-dto";
 import { PrismaService } from "src/Prisma/prisma.Service";
+import * as bcrypt from 'bcrypt' 
 
 @Injectable()
 export class UserService {
@@ -33,6 +34,10 @@ export class UserService {
                     return { message: 'Este CPF já está cadastrado' };
                 }
             }
+
+            
+
+            data.password = await bcrypt.hash(data.password, await bcrypt.genSalt())
         
             const user = await this.prisma.user.create({
                 data
