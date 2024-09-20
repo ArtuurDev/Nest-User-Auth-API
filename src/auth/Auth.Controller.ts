@@ -4,7 +4,6 @@ import { AuthForgetDTO } from "./dto/forgetDTO";
 import { AuthResetDTO } from "./dto/resetDTO";
 import { AuthRegisterDTO } from "./dto/registerDTO";
 import { AuthService } from "./Auth.service";
-import { UserService } from "src/User/User.Service";
 import { AuthGuard } from "../guards/auth.guard";
 import { User } from "src/decorators/use-check-decorators";
 import { FileInterceptor } from "@nestjs/platform-express";
