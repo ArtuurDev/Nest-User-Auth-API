@@ -4,7 +4,7 @@ Este projeto tem como objetivo implementar um sistema de gerenciamento de usuár
 
 ## Estado Atual
 
-O projeto está atualmente em fase de desenvolvimento ativo.
+O projeto está concluido.
 
 ## Tecnologias Utilizadas
 
