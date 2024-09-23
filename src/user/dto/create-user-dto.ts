@@ -4,9 +4,12 @@ import { User } from "src/enums/enums"
 
 export class CreateUserDTO {
 
+
     name: string
+    
     @IsEmail()
     email: string
+    
     @IsStrongPassword()
     password: string
     
