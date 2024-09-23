@@ -1,10 +1,10 @@
 # Visão Geral
 
-Este projeto tem como objetivo implementar um sistema de gerenciamento de usuários utilizando **NestJS**, integrado com conceitos de controle de acesso baseado em funções (RBAC), autenticação com **JSON Web Token (JWT)**, persistência de dados com **Prisma** e banco de dados **PostgreSQL**, além de funcionalidades adicionais como hash de senha, tipos de usuários admin e comuns, upload de arquivos e envio de emails.
+Este projeto tem como objetivo implementar um sistema de gerenciamento de usuários utilizando **NestJS**, integrado com conceitos de controle de acesso baseado em funções (RBAC), autenticação com **JSON Web Token (JWT)**, persistência de dados com **Prisma** e banco de dados **PostgreSQL**, além de funcionalidades adicionais como hash de senha, tipos de usuários admin e comuns e upload de arquivos
 
 ## Estado Atual
 
-O projeto está atualmente em fase de desenvolvimento ativo.
+O projeto está concluido.
 
 ## Tecnologias Utilizadas
 
