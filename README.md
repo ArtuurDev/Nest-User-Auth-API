@@ -1,4 +1,4 @@
-# Gerenciamento de Usuários com Segurança e Funcionalidades Avançadas
+# Gerenciamento de Usuários
 
 Este projeto é uma API que oferece funcionalidades para gerenciamento de usuários, incluindo criação, listagem, atualização e exclusão de registros. Além disso, implementa técnicas avançadas de segurança e controle de acesso.
 
