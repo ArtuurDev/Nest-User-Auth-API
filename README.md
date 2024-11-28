@@ -10,7 +10,7 @@ Este projeto é uma API que oferece funcionalidades para gerenciamento de usuár
 
 ### **2. RBAC (Role-Based Access Control)**
 - Controle de acesso baseado em funções.
-- Permite gerenciar permissões de usuários com base em suas funções (por exemplo, `admin`, `user`, etc.).
+- Permite gerenciar permissões de usuários com base em suas funções (por exemplo, `admin`
 
 ### **3. Upload de Arquivos**
 - Suporte para upload de arquivos por usuários.
