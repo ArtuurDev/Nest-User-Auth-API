@@ -1,17 +1,36 @@
-# Visão Geral
+# Gerenciamento de Usuários com Segurança e Funcionalidades Avançadas
 
-Este projeto tem como objetivo implementar um sistema de gerenciamento de usuários utilizando **NestJS**, integrado com conceitos de controle de acesso baseado em funções (RBAC), autenticação com **JSON Web Token (JWT)**, persistência de dados com **Prisma** e banco de dados **PostgreSQL**, além de funcionalidades adicionais como hash de senha, tipos de usuários admin e comuns e upload de arquivos
+Este projeto é uma API que oferece funcionalidades para gerenciamento de usuários, incluindo criação, listagem, atualização e exclusão de registros. Além disso, implementa técnicas avançadas de segurança e controle de acesso.
 
-## Estado Atual
+## 🚀 Funcionalidades
 
-O projeto está concluido.
+### **1. Hash de Senha**
+- Utilizamos técnicas de hashing para armazenamento seguro das senhas no banco de dados.
+- Protege as senhas contra acessos não autorizados em caso de vazamento de dados.
 
-## Tecnologias Utilizadas
+### **2. RBAC (Role-Based Access Control)**
+- Controle de acesso baseado em funções.
+- Permite gerenciar permissões de usuários com base em suas funções (por exemplo, `admin`, `user`, etc.).
 
-- **NestJS**: Framework para construção de aplicações backend em Node.js.
-- **Prisma**: ORM (Object-Relational Mapping) para Node.js e TypeScript, usado para interação com o banco de dados PostgreSQL.
-- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
-- **JWT (JSON Web Token)**: Mecanismo para autenticação e autorização.
-- **Hash de Senha**: Técnica utilizada para armazenamento seguro de senhas no banco de dados.
-- **RBAC (Role-Based Access Control)**: Controle de acesso baseado em funções para gerenciar permissões dos usuários.
-- **Upload de Arquivos**: Funcionalidade para permitir que usuários façam upload de arquivos.
+### **3. Upload de Arquivos**
+- Suporte para upload de arquivos por usuários.
+- Inclui funcionalidades de:
+  - **Criação** de novos uploads.
+  - **Listagem** de arquivos existentes.
+  - **Atualização** de arquivos.
+  - **Exclusão** de arquivos.
+
+### **4. CRUD de Usuários**
+- **Criar Usuários**: Adicione novos registros de usuários.
+- **Listar Usuários**: Obtenha uma lista de todos os usuários cadastrados.
+- **Atualizar Usuários**: Edite os dados de um usuário existente.
+- **Deletar Usuários**: Remova um usuário do banco de dados.
+
+## 🛠️ Tecnologias Utilizadas
+- **Node.js**: Plataforma para o desenvolvimento do backend.
+- **Nest.js**: Framework para criação de APIs.
+- **bcrypt**: Para hashing seguro de senhas.
+- **Multer**: Middleware para upload de arquivos.
+- **JWT**: Para autenticação e autorização de usuários.
+- **PostgreSQL**: Banco de dados para armazenamento dos registros.
+
