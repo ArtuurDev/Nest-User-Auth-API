@@ -1,4 +1,5 @@
 # Gerenciamento de Usuários
+Projeto para fim de Estudo e consolidação de conhecimento adiquirido em aulas
 
 Este projeto é uma API que oferece funcionalidades para gerenciamento de usuários, incluindo criação, listagem, atualização e exclusão de registros. Além disso, implementa técnicas avançadas de segurança e controle de acesso.
 
